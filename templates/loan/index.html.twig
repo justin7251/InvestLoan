@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% for message in app.flashes('success') %}
+<div class="alert alert-success">
+    {{ message }}
+</div>
+{% endfor %}
+{% for message in app.flashes('warning') %}
+<div class="alert alert-warning">
+    {{ message }}
+</div>
+{% endfor %}
+<div class="row">
+    <div class="col">
+        Total Investor : {{ count_of_investor }}
+        {% for investor in investors %}
+            <ul class="list-group">
+                <li class="list-group-item"><a href="/investor/view/{{investor.id}}">{{ investor.name|e }} - Remind Allowance £{{ investor.getWalletAmount() }}</a></li>
+            </ul>
+        {% endfor %}
+    </div>
+    <div class="col">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Interest_rate</th>
+                    <th scope="col">Current Usage</th>
+                    <th scope="col">Maximum Allowance</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for tranche in tranches %}
+                <tr>
+                    <th scope="row">{{ tranche.name|e }}</th>
+                    <th scope="row">{{ tranche.getInterestRate() }}%</th>
+                    <th scope="row">{{ tranche.getCurrentAmount() }}</th>
+                    <th scope="row">{{ tranche.getMaximumAllowance() }}</th>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

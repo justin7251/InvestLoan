@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="col-lg-4 col-md-4 col-sm-4 container justify-content-center">
+    <div class="row">
+        <h3 class="mt-5 mb-5">Add New Investor</h3>
+        {% if errors %}
+            {% for error in errors %}
+            <div class="alert alert-primary" role="alert">
+                {{ error }}
+            </div>
+            {% endfor %}
+        {% endif %}
+        <div>
+            {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_label(form.investor_id, 'Investor Name') }}
+                    <div class="form-error">
+                        {{ form_errors(form.investor_id) }}
+                    </div>
+                    {{ form_widget(form.investor_id, {attr: {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.tranche_id, 'Tranche Name') }}
+                    <div class="form-error">
+                        {{ form_errors(form.tranche_id) }}
+                    </div>
+                    {{ form_widget(form.tranche_id, {attr: {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.invest_amount) }}
+                    <div class="form-error">
+                        {{ form_errors(form.invest_amount) }}
+                    </div>
+                    {{ form_widget(form.invest_amount, {attr: {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.start_date) }}
+                    <div class="form-error">
+                        {{ form_errors(form.start_date) }}
+                    </div>
+                    {{ form_widget(form.start_date, {attr: {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.end_date) }}
+                    <div class="form-error">
+                        {{ form_errors(form.end_date) }}
+                    </div>
+                    {{ form_widget(form.end_date, {attr: {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary mt-2 form-control">Submit</button>
+                </div>
+            {{ form_end(form, {render_rest: false}) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

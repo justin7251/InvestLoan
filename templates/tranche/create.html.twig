@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="col-lg-4 col-md-4 col-sm-4 container justify-content-center">
+    <div class="row">
+        <h3 class="mt-5 mb-5">Add New Tranche</h3>
+        <div>
+            {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_label(form.name) }}
+                    {{ form_widget(form.name, {attr: {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.maximum_allowance) }}
+                    <div class="form-error">
+                        {{ form_errors(form.interest_rate) }}
+                    </div>
+                    {{ form_widget(form.maximum_allowance, {attr: {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.interest_rate, 'Interest rate (%)') }}
+                    <div class="form-error">
+                        {{ form_errors(form.interest_rate) }}
+                    </div>
+                    {{ form_widget(form.interest_rate, {attr: {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary mt-2 form-control">Submit</button>
+                </div>
+            {{ form_end(form, {render_rest: false}) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

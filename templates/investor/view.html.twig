@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="col">
+    <h3>End of the month interest prediction </h3>
+    <div class="row">
+        {% for data in loan %}
+        <div class="col-md-3 d-flex align-items-stretch mt-2">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                <h5 class="card-title">{{ data.investor_name }}</h5>
+                <p class="card-text">{{ data.interest_rate }}% £{{ data.invest_amount }}</p>
+                {% if data.next_month_interest is defined %}
+                    <p class="card-text text-info mt-3"><strong>Interst: £{{ data.next_month_interest  }}</strong></p>
+                {% endif %}
+                <p class="card-text"> {{ data.start_date|date('d/m/Y') }} - {{ data.end_date|date('d/m/Y') }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
